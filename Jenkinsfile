@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'
-        DOCKER_IMAGE = 'cithit/roseaw'
+        DOCKER_IMAGE = 'cithit/ivyca'
         IMAGE_TAG = "build-${BUILD_NUMBER}"
-        GITHUB_URL = 'https://github.com/miamioh-roseaw/roseaw.git'
-        KUBECONFIG = credentials('roseaw')
+        GITHUB_URL = 'https://github.com/codyivymiamioh/225-lab3-2.git'
+        KUBECONFIG = credentials('ivyca-225')
     }
 
     stages {
