@@ -50,6 +50,8 @@ pipeline {
                     // Update deployment-dev.yaml to use the new image tag
                     sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml"
                     sh "kubectl apply -f deployment-dev.yaml"
+                    sh "kubectl rollout restart deployment roseaw-dev-deployment"
+
                 }
             }
         }
@@ -75,8 +77,10 @@ pipeline {
                     // Set up Kubernetes configuration using the specified KUBECONFIG
                     //sh "ls -la"
                     sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-prod.yaml"
-                    sh "cd .."
+                    
                     sh "kubectl apply -f deployment-prod.yaml"
+                    sh "kubectl rollout restart deployment roseaw-prod-deployment"
+
                 }
             }
         }
