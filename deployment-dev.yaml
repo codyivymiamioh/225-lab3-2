@@ -14,9 +14,10 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: cithit/ivyca:latest
+        image: cithit/ivyca:latest  # Jenkins will replace "latest" with build-${BUILD_NUMBER}
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80  # Expose NGINX on port 80        
+        - containerPort: 80  # Expose NGINX on port 80
 ---
 apiVersion: v1
 kind: Service
@@ -31,3 +32,4 @@ spec:
     port: 80
     targetPort: 80
     nodePort: 32000
+
